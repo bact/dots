@@ -40,6 +40,9 @@ services:
         - action: rebuild
           path: .
           target: build
+          ignore:
+            - logs/
+            - certs/
 
   certbot:
     image: certbot/certbot
