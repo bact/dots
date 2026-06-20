@@ -285,7 +285,7 @@ export async function importSpdxJsonLd(
       // Prevent fetching the remote @context URL embedded in imported documents.
       documentLoader: {
         load: async (url: string) => {
-          if (url === jsonLdContextUrl) return jsonLdContext as object;
+          if (url === jsonLdContextUrl) return { '@context': jsonLdContext };
           return (await fetch(url)).json();
         },
       },
