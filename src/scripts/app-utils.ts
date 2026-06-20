@@ -16,7 +16,7 @@ import {
   PropertyOption,
 } from '@/types';
 import { ontoStore } from '@/store/onto';
-import { screenToCanvas } from '@/store/flow';
+import { screenToCanvas, flowStore } from '@/store/flow';
 import { importSpdxJsonLd } from '@/scripts/fs-utils';
 
 export const advisoryText = (text: string | undefined) => {
@@ -259,6 +259,7 @@ export function initNodeProps(recClsProps: NodeData['recClsProps']) {
 }
 
 export async function importExample() {
+  flowStore.getState().reset();
   const refPos = screenToCanvas(
     window.innerWidth / 2 - 128,
     window.innerHeight / 2 - 40.5
